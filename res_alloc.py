@@ -5,6 +5,8 @@ import numpy as np
 from itertools import compress
 import math
 
+
+
 resource = [random.choice(ascii_lowercase) + str(_) for _ in range(100)]
 project = [random.choice(ascii_lowercase) + random.choice(ascii_lowercase) +
            str(_) for _ in range(50)]
@@ -65,6 +67,7 @@ def schedule_display(sol):
     return res_proj.sort_values("Project")
     
 rand_sch = schedule_display([0 for _ in range(len(resources))])
+print("This is the random schedule")
 print(rand_sch)
 
 def resproj_cost(sol):
@@ -84,7 +87,7 @@ def resproj_cost(sol):
       
       # remove selected slot
       del slots[x]
-    
+
   return cost
   
 def simulated_annealing(domain, costf, temp = 10000.0,
@@ -118,10 +121,12 @@ def simulated_annealing(domain, costf, temp = 10000.0,
         
         # decrease the temperature
         temp = temp * cool
+
     return current_sol
     
  
 solution = [(0, (len(projects) * 2) - i - 1) for i in range(0, len(projects) * 2)]
+
 
 # step = 3 to widen the direction of movement and high cool to run the algorithm longer
 schedule = simulated_annealing(solution, resproj_cost, step = 3, cool = 0.99)
