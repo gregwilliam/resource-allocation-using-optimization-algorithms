@@ -5,7 +5,7 @@ import numpy as np
 from itertools import compress
 import math
 
-
+#source: https://github.com/MNoorFawi/resource-allocation-using-optimization-algorithms
 
 resource = [random.choice(ascii_lowercase) + str(_) for _ in range(100)]
 project = [random.choice(ascii_lowercase) + random.choice(ascii_lowercase) +
@@ -67,8 +67,7 @@ def schedule_display(sol):
     return res_proj.sort_values("Project")
     
 rand_sch = schedule_display([0 for _ in range(len(resources))])
-print("This is the random schedule")
-print(rand_sch)
+
 
 def resproj_cost(sol):
   cost = 0
